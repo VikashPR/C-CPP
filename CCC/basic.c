@@ -1,23 +1,38 @@
-#include <iostream>
-#include <unordered_map>
-using namespace std;
-int getMaximumDiff(int arr[], int n)
+int pad[3][3];
+int tracer[10][12];
+int c;
+
+int ABS(int a) { return a < 0 ? -a : a; }
+int MAX(int a, int b) { return a > b ? a : b; }
+int d(int r1, int c1, int r2, int c2)
 {
-    unordered_map<int, int> freq;
-    for (int i = 0; i < n; i++)
-        freq[arr[i]]++;
-    int maxfreq = 0, minfreq = n;
-    for (auto x : freq)
-    {
-        maxfreq = max(maxfreq, x.second);
-        minfreq = min(minfreq, x.second);
-    }
-    return (maxfreq - minfreq);
+    return MAX(ABS(c1 - c2), ABS(r1 - r2));
 }
-int main()
+
+int entryTime(char *s, char *p)
 {
-    int arr[] = {1, 2, 3, 1, 5, 2, 3, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    cout << getMaximumDiff(arr, n) << "\n";
-    return 0;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            pad[i][j] = p[c] - '0';
+            tracer[pad[i][j]][0] = i;
+            tracer[pad[i][j]][1] = j;
+            c++;
+        }
+    }
+    int ris = 0;
+    int b4 = s[0] - '0';
+
+    for (int i = 0; s[i] != '\0'; i++)
+    {
+        int r1 = tracer[b4][0], c1 = tracer[b4][1];
+        int r2 = tracer[s[i] - '0'][0], c2 = tracer[s[i] - '0'][1];
+
+        ris += d(r1, c1, r2, c2);
+
+        b4 = s[i] - '0';
+    }
+
+    return ris;
 }

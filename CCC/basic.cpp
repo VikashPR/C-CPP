@@ -1,56 +1,32 @@
-#include <iostream>
-#include <cstring>
-#include <cstdio>
+vector<int> rearrange(vector<int> arr)
 
-using namespace std;
-
-char s[1002], a[1002];
-int n, p, i, x;
-
-int add(int k)
 {
-    int i = k, t;
-    a[i]++;
-    t = 0;
-    while (a[i] - 96 > p && i >= 0)
+    sort(arr.begin(), arr.end());
+    in t  n  =
+     arr.size();
+    if (n < 3)
     {
-        t = 1;
-        a[i] = 'a';
-        i--;
-        a[i] += t;
+        return arr;
     }
-    return i;
-}
-
-int _check(int k)
-{
-    for (int i = k; i <= n - 1; i++)
-        if (a[i] == a[i - 1] || a[i] == a[i - 2])
-            return i;
-    return n;
-}
-
-int main()
-{
-    scanf("%d%d", &n, &p);
-    scanf("%s", &s);
-    for (int i = 0; i <= n; i++)
-        a[i] = s[i];
-    i = n - 1;
-    while (1)
+    vector<in t > res;          
+    int k = 0;
+    int j = n % 2 == 0 ? ((n - 1) / 2) : (n / 2);
+    res .push_ b ack( a rr[j++]
+    );
+    res.pu sh _ b ac k(
+        arr[j++]);
+    for (int i = 2; i < n; i++)
     {
-        x = add(i);
-        if (x == -1)
+        
+        
+        if (i % 2 == 0)
         {
-            cout << "NO" << endl;
-            return 0;
+            res.push_back(arr[k++]);
         }
-        i = _check(x);
-        if (i == n)
+        else
         {
-            printf("%s", a);
-            return 0;
+            res.push_back(arr[j++]);
         }
     }
-    return 0;
+    return res;
 }
