@@ -1,17 +1,23 @@
-#include <stdio.h>
-#include<math.h>
-int main()
-{  
-    int n;
-    scanf("%d", &n);
-    int k = 10;
-    for (int i = 0; i <= n; i++)
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+int getMaximumDiff(int arr[], int n)
+{
+    unordered_map<int, int> freq;
+    for (int i = 0; i < n; i++)
+        freq[arr[i]]++;
+    int maxfreq = 0, minfreq = n;
+    for (auto x : freq)
     {
-        int x = k / 9;
-        printf("%d\n", i * x);
-        k*=10;
-        printf("\n");
+        maxfreq = max(maxfreq, x.second);
+        minfreq = min(minfreq, x.second);
     }
-
+    return (maxfreq - minfreq);
+}
+int main()
+{
+    int arr[] = {1, 2, 3, 1, 5, 2, 3, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << getMaximumDiff(arr, n) << "\n";
     return 0;
 }

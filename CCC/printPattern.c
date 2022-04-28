@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include<math.h>
+#include <math.h>
 int main()
-{  
+{
     int n;
     scanf("%d", &n);
     int k = 10;
@@ -9,7 +9,7 @@ int main()
     {
         int x = k / 9;
         printf("%d\n", i * x);
-        k*=10;
+        k *= 10;
         printf("\n");
     }
 
