@@ -118,10 +118,32 @@
 # done
 
 #FORLOOP TO RENAME FILE
-FILES=$(ls *.txt)
-NEW="New"
-for FILE in $FILES
-    do 
-        echo "We are renaming the new-$FILE"
-        mv $FILE $NEW-$FILE
-done
+# FILES=$(ls *.txt)
+# NEW="New"
+# for FILE in $FILES
+#     do 
+#         echo "We are renaming the new-$FILE"
+#         mv $FILE $NEW-$FILE
+# done
+
+#WHILE LOOP
+
+# COUNT=10
+# while [ $COUNT -gt 0 ]
+# do 
+#     echo $COUNT
+#     COUNT=`expr $COUNT - 1`
+# done
+
+
+#FUNCTIONS 
+# function sayHello(){
+#     echo "Hello everybody"
+# }
+# sayHello
+
+#FUNCTIONS WITH PARAM
+# function greet(){
+#     echo "Hello $1 Hopefully you are $2 years old"
+# }
+# greet "Vikash", "19"
