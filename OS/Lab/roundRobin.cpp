@@ -29,8 +29,6 @@ void findWaitingTime(int processes[], int n,
 				{
 					t = t + rem_bt[i];
 					wt[i] = t - bt[i];
-
-					/
 					rem_bt[i] = 0;
 				}
 			}
