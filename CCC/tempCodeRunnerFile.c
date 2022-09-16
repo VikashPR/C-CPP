@@ -1,15 +1,19 @@
 #include <stdio.h>
-struct Sample
+#include <stdlib.h>
+struct node
 {
-    int a;
-    int b;
-};
+    int data;
+    struct node *link; // Struct node pointer is a type of data type, int cannot be used because it can't store struct data address
+} * x, *y;
 int main()
 {
-    struct Sample re, *pe;
-    re.a = 88;
-    re.b = 99;
-    printf("Using Regular Element %d %d", re.a, re.b);
-    printf("Using Pointer Element %d %d", pe->a, pe->b);
+    x = (struct node *)malloc(sizeof(struct node));
+    y = (struct node *)malloc(sizeof(struct node));
+    x->data = 10;
+    x->link = y;
+    y->data = 20;
+    y->link = NULL;
+    printf("%d %u\n", x->data, x->link);
+    printf("%d", x->link->data);
     return 0;
 }
