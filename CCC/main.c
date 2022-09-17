@@ -1,37 +1,28 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-int *compList(Node *head1, Node head2)
-{
-    while (head1 != NULL && head2 != NULL)
-    {
-        if (head1->data == head2->data)
-        {
-            head1 = head1->next;
-            head2 = head2->next;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    if (head1 == NULL && head2 == NULL)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-struct node
-{
-    int data;
-    struct node *link; // Struct node pointer is a type of data type, int cannot be used because it cant store struct
-} * x, *y;
+int s[1000000], max[10000];
+int top = -1, m = -1;
 int main()
 {
-
+    int n, x, v;
+    scanf("%d", &n);
+    while (n--)
+    {
+        scanf("%d", &x);
+        if (x == 1)
+        {
+            scanf("%d", &v);
+            s[++top] = v;
+            if (m == -1 || v > max[m])
+                max[++m] = v;
+        }
+        else if (x == 2)
+        {
+            if (s[top] == max[m])
+                m--;
+            top--;
+        }
+        else
+            printf("%d\n", max[m]);
+    }
     return 0;
 }
