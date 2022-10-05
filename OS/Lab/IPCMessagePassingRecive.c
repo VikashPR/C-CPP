@@ -4,6 +4,7 @@
 #include <sys/msg.h>
 
 // structure for message queue
+
 struct mesg_buffer
 {
     long mesg_type;
@@ -20,6 +21,7 @@ int main()
 
     // msgget creates a message queue
     // and returns identifier
+
     msgid = msgget(key, 0666 | IPC_CREAT);
 
     // msgrcv to receive message
