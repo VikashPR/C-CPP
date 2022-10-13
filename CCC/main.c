@@ -1,28 +1,31 @@
 #include <stdio.h>
-int s[1000000], max[10000];
-int top = -1, m = -1;
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+void partition(int arr[], int low, int high)
+{
+    int pivot = arr[high];
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (arr[j] < pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
 int main()
 {
-    int n, x, v;
-    scanf("%d", &n);
-    while (n--)
-    {
-        scanf("%d", &x);
-        if (x == 1)
-        {
-            scanf("%d", &v);
-            s[++top] = v;
-            if (m == -1 || v > max[m])
-                max[++m] = v;
-        }
-        else if (x == 2)
-        {
-            if (s[top] == max[m])
-                m--;
-            top--;
-        }
-        else
-            printf("%d\n", max[m]);
-    }
     return 0;
 }
