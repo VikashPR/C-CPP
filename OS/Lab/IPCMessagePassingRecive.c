@@ -20,6 +20,7 @@ int main()
     key = ftok("progfile", 65);
 
     // msgget creates a message queue
+    
     // and returns identifier
 
     msgid = msgget(key, 0666 | IPC_CREAT);
