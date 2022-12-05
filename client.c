@@ -37,6 +37,7 @@ int main()
     char buffer[10000] = "";
     char fileName[30];
     while (1)
+    
     {
         bzero(buffer, sizeof(buffer));
         printf("\n$\t:\t");
