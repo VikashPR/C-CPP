@@ -104,6 +104,7 @@ int main() {
         }
         else {
             printf("%s" , buffer);
+            
         }
     }
     close(sockFD);
